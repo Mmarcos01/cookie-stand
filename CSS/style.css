@@ -6,3 +6,8 @@ h1 {
   color: darkred;
   font-size: 2em;
 }
+
+img {
+  height: 30%;
+  width: 30%;
+}
