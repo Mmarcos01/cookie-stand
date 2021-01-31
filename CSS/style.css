@@ -72,4 +72,42 @@ img {
 
 button {
   margin-bottom: 20px;
+  background-color: rgb(203, 242, 243);
+  font-weight: bold;
+}
+
+a{
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+table {
+  background-color: white;
+  margin-left: 15%;
+}
+
+thead {
+  border: 1px solid rgb(36, 1, 1);
+  background-color: rgb(163, 102, 102);
+  color: white;
+  font-weight:500;
+}
+
+th {
+  border: 1px solid rgb(36, 1, 1);
+  background-color:  rgb(163, 102, 102);
+  color: white;
+  font-weight:500;
+  padding: 8px;
+}
+
+td {
+  border: 1px solid rgb(36, 1, 1);
+  padding: 5px;
+  text-align: center;
+}
+
+tfoot {
+  background-color: rgb(203, 242, 243);
+  text-align: center;
 }
