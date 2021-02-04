@@ -1,20 +1,26 @@
 'use strict';
+// Change background random color function:
 
-// let myContainer = document.getElementById('container');
-// let seattleList = document.getElementById('seattle');
-// console.log(myContainer);
+// let colors = ['black', 'white', 'green', 'purple', 'brown', 'salmon'];
 
-// let cookieTable = document.getElementById('cookie-table');
+// let button = document.getElementById('button');
+
+// button.addEventListener('click', function(){
+//   let randomColor = colors[Math.floor(Math.random() * colors.length)];
+//   let change = document.getElementById('change');
+
+//   change.style.background = randomColor;
+// });
 
 const locationNames = [];
 
 const hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2am', '3am', '4am', '5am', '6pm', '7pm'];
-const grandTotals = new Array(hours.length + 1).fill(0);
-console.log(grandTotals);
+const grandTotals = new Array(hours.length + 1).fill(0); //creates array without items, but with the given length of the hours array, .fill sets values of each index to 0
+// console.log(grandTotals);
 
 //Constructor Function:
 
-function CookieStand(location, minCustPerHr, maxCustPerHr, avgCookiesSold) {
+function CookieStand(location, minCustPerHr, maxCustPerHr, avgCookiesSold) { //parameters that will have different values will be in()
   this.location = location;
   this.minCustPerHr = minCustPerHr;
   this.maxCustPerHr = maxCustPerHr;
@@ -23,8 +29,11 @@ function CookieStand(location, minCustPerHr, maxCustPerHr, avgCookiesSold) {
   this.cookiesSoldPerHr = [];
   this.calcCookiesSoldEachHour();
   this.grandTotalsCalc();
-  locationNames.push(this);
+  locationNames.push(this); //push everything into the empty locationNames array above
 }
+
+// Creating (Object Constructor?) function, callling .grandTotalsCalc function to execute this code
+// Calculate Grand Totals:
 
 CookieStand.prototype.grandTotalsCalc = function () {
   for (let i = 0; i < this.cookiesSoldPerHr.length; i++) {
@@ -34,20 +43,21 @@ CookieStand.prototype.grandTotalsCalc = function () {
 
 };
 
+// Calculate random numbers based on min max parameters
 CookieStand.prototype.randomCusEachHour = function () {
   for (let i = 0; i < hours.length; i++) {
     return Math.floor(Math.random() * (this.maxCustPerHr - this.minCustPerHr + 1) + this.minCustPerHr);
   }
 };
-
+//Calculate total of those random numbers
 CookieStand.prototype.calcCookiesSoldEachHour = function () {
   for (let i = 0; i < hours.length; i++) {
     let hourlyCookies = Math.ceil(this.randomCusEachHour() * this.avgCookiesSold);
-    console.log(hourlyCookies);
+    // console.log(hourlyCookies);
     this.cookiesSoldPerHr.push(hourlyCookies);
     this.dailySoldTotal += hourlyCookies;
   }
-  console.log(this.dailySoldTotal);
+  // console.log(this.dailySoldTotal);
 };
 
 // instances of CookieStand constructor
@@ -62,16 +72,18 @@ new CookieStand('Lima', 2, 16, 4.6);
 // paris.calcCookiesSoldEachHour();
 // lima.calcCookiesSoldEachHour();
 
+// Begin rendering data to table:
+
 let renderHeaderRow = function () {
   let trElem = document.getElementById('row');
-  console.log(trElem);
+  // console.log(trElem);
   let thElem = document.createElement('th');
   thElem.textContent = 'Location';
   trElem.appendChild(thElem);
-  for (let i = 0; i < hours.length; i++) {
+  for (let i = 0; i < hours.length; i++) { // for loop for creating table data cells the length of hours
     let tdElem = document.createElement('td');
-    tdElem.textContent = hours[i];
-    trElem.appendChild(tdElem);
+    tdElem.textContent = hours[i]; //render hours in td cells based on hours array
+    trElem.appendChild(tdElem); //append data to the row
   }
   let tdElem = document.createElement('td');
   tdElem.textContent = 'Total';
@@ -80,6 +92,7 @@ let renderHeaderRow = function () {
 
 renderHeaderRow();
 
+//render each row of stores with their values
 let renderStoreRow = function () {
   let body = document.getElementById('body');
   for (let i = 0; i < locationNames.length; i++) {
@@ -106,7 +119,7 @@ let renderFooterRow = function () {
   let thElem = document.createElement('th');
   thElem.textContent = 'Grand Total';
   footer.appendChild(thElem);
-  console.log(grandTotals);
+  // console.log(grandTotals);
   for (let i = 0; i < grandTotals.length; i++) {
     let tdElem = document.createElement('td');
     tdElem.textContent = grandTotals[i];
@@ -115,3 +128,5 @@ let renderFooterRow = function () {
 };
 
 renderFooterRow();
+
+
