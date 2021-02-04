@@ -1,19 +1,22 @@
 # cookie-stand
-Salmon Cookies
 
-# LAB - Number
+# Lab 06
 
-## Project Name
+## Salmon Cookies
 
-I built an app with a direct and powerful purpose. My app does all of the things that it accomplishes well. Here  I describe the purpose and functionality so those that visit my README understand the app.
+Build a webpage for displaying a table of data to include city, sales, and totals. Include a public facing informational home page.
 
-### Author: Student/Group Name
+### Author: Marie Marcos
 
 ### Links and Resources
 Math Random Reference:
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
+Color Change Reference:
+https://www.youtube.com/watch?v=jznWWxPZkvQ
+
 
 ### Reflections and Comments
-* Consider including the answers to your daily journal and submission questions here
-* This is also a good place to reflect on the tools and resources used and learned
+Object Literals
+Constructor functions
+appending to DOM
