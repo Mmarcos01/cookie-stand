@@ -152,3 +152,20 @@ button {
   border: 2px solid darkred;
   cursor: pointer;
 }
+
+form {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: darkred;
+  font-weight: bold;
+  background-color: rgb(236, 190, 190);
+}
+
+legend {
+  padding-bottom: 10px;
+  font-size: 18px;
+}
+
+label {
+  padding-left: 10px;
+}

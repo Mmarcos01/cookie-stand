@@ -2,7 +2,7 @@
 // Change background random color function:
 
 let colorChange = function () {
-  let colors = ['black', 'white', 'green', 'purple', 'brown', 'salmon'];
+  let colors = ['black', 'white', 'grey', 'lightpink', 'brown', 'salmon'];
 
   let button = document.getElementById('button');
 
