@@ -1,16 +1,23 @@
 'use strict';
 // Change background random color function:
 
-// let colors = ['black', 'white', 'green', 'purple', 'brown', 'salmon'];
+let colorChange = function () {
+  let colors = ['black', 'white', 'green', 'purple', 'brown', 'salmon'];
 
-// let button = document.getElementById('button');
+  let button = document.getElementById('button');
 
-// button.addEventListener('click', function(){
-//   let randomColor = colors[Math.floor(Math.random() * colors.length)];
-//   let change = document.getElementById('change');
+  button.addEventListener('click', function () {
+    let randomColor = colors[Math.floor(Math.random() * colors.length)];
+    let change = document.getElementById('change');
 
-//   change.style.background = randomColor;
-// });
+    change.style.background = randomColor;
+  });
+};
+
+colorChange();
+
+let myForm = document.querySelector('form');
+// console.log(myForm); // proof of life shows form in console log
 
 const locationNames = [];
 
@@ -40,7 +47,20 @@ CookieStand.prototype.grandTotalsCalc = function () {
     grandTotals[i] += this.cookiesSoldPerHr[i];
     grandTotals[grandTotals.length - 1] += this.cookiesSoldPerHr[i];
   }
-
+  let body = document.getElementById('body');
+  let trElem = document.createElement('tr');
+  let thElem = document.createElement('th');
+  thElem.textContent = this.location;
+  trElem.appendChild(thElem);
+  for (let j = 0; j < this.cookiesSoldPerHr.length; j++) {
+    let tdElem = document.createElement('td');
+    tdElem.textContent = this.cookiesSoldPerHr[j];
+    trElem.appendChild(tdElem);
+  }
+  let tdElem = document.createElement('td');
+  tdElem.textContent = this.dailySoldTotal;
+  trElem.appendChild(tdElem);
+  body.appendChild(trElem);
 };
 
 // Calculate random numbers based on min max parameters
@@ -78,7 +98,7 @@ let renderHeaderRow = function () {
   let trElem = document.getElementById('row');
   // console.log(trElem);
   let thElem = document.createElement('th');
-  thElem.textContent = 'Location';
+  thElem.textContent = '';
   trElem.appendChild(thElem);
   for (let i = 0; i < hours.length; i++) { // for loop for creating table data cells the length of hours
     let tdElem = document.createElement('td');
@@ -91,28 +111,6 @@ let renderHeaderRow = function () {
 };
 
 renderHeaderRow();
-
-//render each row of stores with their values
-let renderStoreRow = function () {
-  let body = document.getElementById('body');
-  for (let i = 0; i < locationNames.length; i++) {
-    let trElem = document.createElement('tr');
-    let thElem = document.createElement('th');
-    thElem.textContent = locationNames[i].location;
-    trElem.appendChild(thElem);
-    for (let j = 0; j < locationNames[i].cookiesSoldPerHr.length; j++) {
-      let tdElem = document.createElement('td');
-      tdElem.textContent = locationNames[i].cookiesSoldPerHr[j];
-      trElem.appendChild(tdElem);
-    }
-    let tdElem = document.createElement('td');
-    tdElem.textContent = locationNames[i].dailySoldTotal;
-    trElem.appendChild(tdElem);
-    body.appendChild(trElem);
-  }
-};
-
-renderStoreRow();
 
 let renderFooterRow = function () {
   let footer = document.getElementById('footrow');
@@ -128,5 +126,23 @@ let renderFooterRow = function () {
 };
 
 renderFooterRow();
+
+function handleSubmit(event) {
+  event.preventDefault();
+
+  let addLocation = event.target.addLocation.value;
+  let minCust = +event.target.minCust.value;
+  let maxCust = +event.target.maxCust.value;
+  let avgCookies = +event.target.avgCookies.value;
+
+  new CookieStand(addLocation, minCust, maxCust, avgCookies);
+
+  let grab = document.getElementById('footrow');
+  grab.innerHTML = '';
+  renderFooterRow();
+}
+
+myForm.addEventListener('submit', handleSubmit);
+
 
 

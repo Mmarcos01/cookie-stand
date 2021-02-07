@@ -17,11 +17,37 @@
     <ul class="homenav">
       <li class="homenav-list"><a href=index.html>Home</a></li>
       <li class="homenav-list"><a href="sales.html">Sales</a></li>
+      <button id="button">Change Background</button>
     </ul>
   </nav>
 </header>
 
-<body>
+<body id="change">
+
+  <form>
+    <fieldset>
+      <legend>Store Form</legend>
+
+      <label> Location: 
+        <input type="text" name="addLocation">
+      </label>
+
+      <label> Minimum Customers: 
+        <input type="number" name="minCust">
+      </label>
+      
+      <label> Maximum Customers: 
+        <input type="number" name="maxCust">
+      </label>
+ 
+      <label> Average Cookies Per Customer: 
+        <input type="number" name="avgCookies">
+      </label>
+
+      <button type="submit">Submit</button>
+
+    </fieldset>
+  </form>
     
     <table id="cookie-stand">
 
